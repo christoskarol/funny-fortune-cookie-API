@@ -1,10 +1,12 @@
 {
-  "name": "funny-fortune-cookie-API",
+  "name": "funny_fortunes_api",
   "version": "1.0.0",
   "description": "Funny fortune cookie sayings API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -16,5 +18,11 @@
   "bugs": {
     "url": "https://github.com/christoskarol/funny-fortune-cookie-API/issues"
   },
-  "homepage": "https://github.com/christoskarol/funny-fortune-cookie-API#readme"
+  "homepage": "https://github.com/christoskarol/funny-fortune-cookie-API#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
