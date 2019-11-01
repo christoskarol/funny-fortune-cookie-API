@@ -1,5 +1,5 @@
 {
-  "name": "funny_fortunes_api",
+  "name": "funny-fortune-cookie-API",
   "version": "1.0.0",
   "description": "Funny fortune cookie sayings API",
   "main": "index.js",
