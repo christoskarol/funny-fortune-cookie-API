@@ -27,8 +27,6 @@ app.get("/fortunes/:id", (req, res) => {
 });
 
 app.post("/fortunes", (req, res) => {
-  console.log(req.body);
-
   const { message, lucky_number, spirit_animal } = req.body;
 
   const fortune_ids = fortunes.map(f => f.id);
@@ -41,6 +39,33 @@ app.post("/fortunes", (req, res) => {
   };
 
   const new_fortunes = fortunes.concat(fortune);
+
+  fs.writeFile("./data/fortunes.json", JSON.stringify(new_fortunes), err =>
+    console.log(err)
+  );
+
+  res.json(new_fortunes);
+});
+
+app.put("/fortunes/:id", (req, res) => {
+  const { id } = req.params;
+
+  const old_fortune = fortunes.find(f => f.id == id);
+
+  ["message", "lucky_number", "spirit_animal"].forEach(key => {
+    if (req.body[key]) old_fortune[key] = req.body[key];
+  });
+
+  fs.writeFile("./data/fortunes.json", JSON.stringify(fortunes), err =>
+    console.log(err)
+  );
+
+  res.json(fortunes);
+});
+
+app.delete("/fortunes/:id", (req, res) => {
+  const { id } = req.params;
+  const new_fortunes = fortunes.filter(f => f.id != id);
 
   fs.writeFile("./data/fortunes.json", JSON.stringify(new_fortunes), err =>
     console.log(err)
